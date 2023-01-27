@@ -1,0 +1,62 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    container_name: gb_news
+    image: postgres
+    environment:
+      - POSTGRES_DB=gb_news
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=NnVvGET
+    restart: unless-stopped
+    volumes:
+      - ./etc/db/data:/var/lib/postgresql/data1
+    ports:
+      - '5432:5432'
+
+  redis:
+    image: redis:6.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: ghcr.io/joeferner/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+#  base:
+#      container_name: base
+#      build:
+#        context: ./
+#        dockerfile: Dockerfile
+#
+#  api:
+#      container_name: api
+#      build:
+#        context: ./
+#        dockerfile: ./apps/api/Dockerfile
+#      ports:
+#        - 3001:3001
+#      environment:
+#        DB_HOST: host.docker.internal
+#        DB_USER: postgres
+#        DB_PASS: NnVvGET
+#
+#  web:
+#      container_name: web
+#      build:
+#        context: ./
+#        dockerfile: ./apps/web/Dockerfile
+#      ports:
+#        - 3002:3002
+
+volumes:
+  redis:
+       driver: local
+#  web:
+#       driver: local

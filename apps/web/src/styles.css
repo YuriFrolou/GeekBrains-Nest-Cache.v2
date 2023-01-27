@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+img{
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+.card{
+  min-height: 450px;
+  box-shadow: 2px 2px 7px rgba(128,128,128,0.8);
+}
+.card img{
+  height: 300px;
+}
+.comment{
+  border-bottom: 1px solid darkgray;
+  padding-bottom: 5px;
+  margin-top: 15px;
+}
+.comments-block{
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.6);
+  padding: 4px;
+}
+input[type='file']{
+  display: block;
+}
+.bold{
+  font-weight: bold;
+}
+.header_navLink_active__8elnK{
+  font-weight: 600;
+}
